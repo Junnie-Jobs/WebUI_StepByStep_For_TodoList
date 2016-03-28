@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8">
+		<title>Deferred</title>
+		<style type="text/css">
+		</style>
+	</head>
+	<body>
+		
+		
+		<script type="text/javascript" src="../../lib/jquery-2.2.1.js"></script>
+		<script type="text/javascript">
+			var Todo = {
+				get : function(fp) {
+					$.ajax("get.json").done(fp);
+				},
+				post : function(fp) {
+					$.ajax("post.json").done(fp);
+				},
+				put : function(fp) {
+					$.ajax("put.json").done(fp);
+				}
+			};
+
+			Todo.get(function(data){
+				console.log("get");
+				Todo.post(function(data){
+					console.log("post");
+					Todo.put(function(data){
+						console.log("put");
+					});
+				});
+			});
+
+			// deferred object을 사용하여 개선
+			// then을 사용하기.
+
+
+		</script>
+	</body>
+</html>

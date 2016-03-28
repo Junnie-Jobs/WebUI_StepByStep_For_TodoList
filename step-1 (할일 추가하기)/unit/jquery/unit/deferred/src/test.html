@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8">
+		<title>Deferred</title>
+		<style type="text/css">
+		</style>
+	</head>
+	<body>
+		
+		
+		<script type="text/javascript" src="../../lib/jquery-2.2.1.js"></script>
+		<script type="text/javascript">
+
+
+			function test1(param){
+				var deferred = $.Deferred();
+				setTimeout(function(){
+					deferred.resolve(param*2);
+				},10);
+				return deferred.promise();
+			}
+
+			function test2(param){
+				return param * 2;
+			}
+
+			function test3(param){
+				var deferred = $.Deferred();
+				setTimeout(function(){
+					deferred.resolve(param*3);
+				},10);
+				return deferred.promise();
+			}
+
+			test1(2).
+				then(function(param){
+					return test2(param);
+				}).
+				then(function(param){
+					return test3(param);
+				}).
+				then(function(param){
+					console.log("end %s",param);
+				});
+
+
+		</script>
+	</body>
+</html>
