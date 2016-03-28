@@ -1,0 +1,40 @@
+alert(1);
+	'use strict';
+	
+	var ENTER_KEY = 13;
+	var todoTempStr = 
+		"<li>"+
+			"<div class=\"view\">"+
+				"<input class=\"toggle\" type=\"checkbox\">"+
+				"<label>{{todo}}</label>"+
+				"<button class=\"destroy\"></button>"+
+			"</div>"+
+			"<input class=\"edit\" value=\"{{todo}}\">"+
+		"</li>";
+	var addTemplate = Handlebars.compile(todoTempStr);
+
+
+	function completed(event){
+		$(event.target).closest("li").toggleClass("completed");
+	}
+	function destroy(event){
+		$(event.target).closest("li").slideUp();
+	}
+	function add(event){
+		var todo = $(event.target).val();
+		if(event.which === ENTER_KEY && todo !== ""){
+			$(addTemplate({"todo":todo})).appendTo(".todo-list");
+			$(event.target).val("");
+		}
+	}
+
+
+	function init(){
+		$(".new-todo").on("keyup", add);
+		$(".todo-list").on("click", ".toggle", completed);
+		$(".todo-list").on("click", ".destroy", destroy);
+	}
+
+	return {
+		"init" : init
+	}

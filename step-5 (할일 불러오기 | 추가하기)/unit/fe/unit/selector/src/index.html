@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8">
+		<title>CSS 선택자</title>
+		<style type="text/css">
+
+		/*[선택자] {
+			속성키 : 속성값;
+		}*/
+		/*
+			a - inline
+			b - id
+			c - attr, class
+			d - tag
+		*/
+		</style>
+	</head>
+	<body>
+		<form>
+			<input id="text" type="text" placeholder="new" />
+			<input id="button" type="button" class="button" value="add">
+		</form>		
+		<div id="main">
+			<ul id="foo" class="group number">
+				<li>1</li>
+				<li>2
+					<ul class="group">
+						<li>2-1</li>
+						<li>2-2</li>
+					</ul>
+				</li>
+				<li>3
+					<ul class="group">
+						<li>3-1</li>
+						<li>3-2</li>
+					</ul>
+				</li>
+			</ul>
+			<ul class="group alpabet">
+				<li>a</li>
+				<li>b
+					<ul class="group">
+						<li>b-1</li>
+						<li>b-2</li>
+					</ul>
+				</li>
+				<li>c
+					<ul class="group">
+						<li>c-1</li>
+						<li>c-2</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+		<div id="sub">
+			<ul class="group">
+				<li>etc1</li>
+				<li>etc2</li>
+			</ul>
+		</div>
+	</body>
+</html>
